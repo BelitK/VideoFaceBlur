@@ -1,21 +1,16 @@
-from moviepy.editor import *
+import moviepy.editor as mp
 import os
 
 
-# direts = os.listdir("blurred")
-# for name in direts:
-#
-#
-#
-# # loading video dsa gfg intro video
-#     clip = VideoFileClip(f"blurred/{name}")
-#
-# # loading audio file
-#     print(f"sounds/{name[:-4]}.mp3")
-#     audioclip = AudioFileClip(f"sounds/{name[:-4]}.mp3")
-#
-# # adding audio to the video clip
-#     videoclip = clip.set_audio(audioclip)
-#
-#     clip.write_videofile(f"{name}")
-clip = VideoFileClip(f"blurred/{name}")
+diretvid = os.listdir("toBlur")
+diretsound = os.listdir("sounds")
+#os.mkdir("finished")
+for video in diretvid:
+
+    clip = mp.VideoFileClip(f"blurred/{video[:-4]}.mp4")
+    print(video)
+    audioclip = mp.VideoFileClip(f"toBlur/{video}")
+    #print(f"sounds/{video[:-4]}.mp3")
+    #fVid = mp.CompositeAudioClip([clip.audio,audioclip])
+    finalclip = clip.set_audio(audioclip.audio)
+    finalclip.write_videofile(f"finished/{video[:-4]}.mp4")

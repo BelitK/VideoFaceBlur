@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 import time
 import sys
+from Audio import strip_audio, mixAuVid
 
-# https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt
+
 prototxt_path = "weights/deploy.prototxt.txt"
-# https://raw.githubusercontent.com/opencv/opencv_3rdparty/dnn_samples_face_detector_20180205_fp16/res10_300x300_ssd_iter_140000_fp16.caffemodel
 model_path = "weights/res10_300x300_ssd_iter_140000_fp16.caffemodel"
 
 # load Caffe model
@@ -59,3 +59,4 @@ while True:
 cv2.destroyAllWindows()
 cap.release()
 out.release()
+strip_audio(pathVid="Videos",targetAud="sound")
